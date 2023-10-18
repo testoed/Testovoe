@@ -31,24 +31,25 @@ public class Calc {
             }
         }
         String under_charString = String.valueOf(under_char);
-        String[] blacks = under_charString.split("[+-/*]");
+        String[] blacks = under_charString.split("[+-/*=]");
         String stable00 = blacks[0];
         String stable01 = blacks[1];
         String string03 = stable01.trim();
         number1 = romanToNumber(stable00);
         number2 = romanToNumber(string03);
-        if (number1 < 0 && number2 < 0) {
+        if (number1 < 0 || number2 < 0) {
             result = 0;
         } else {
             result = calculated(number1, number2, operation);
-            System.out.println("---Результат для римских цифр----");
+            System.out.println("Результат");
             String resultRoman = convertNumToRoman(result);
             System.out.println(stable00 + " " + operation + " " + string03 + " = " + resultRoman);
+            return;
         }
         number1 = Integer.parseInt(stable00);
         number2 = Integer.parseInt(string03);
         result = calculated(number1, number2, operation);
-        System.out.println("--Результат для арабских цифр----");
+        System.out.println("Результат");
         System.out.println(number1 + " " + operation + " " + number2 + " = " + result);
     }
 
